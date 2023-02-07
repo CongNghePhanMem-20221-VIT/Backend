@@ -1,5 +1,6 @@
 package com.example.cnpm_backend.model;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -14,6 +15,7 @@ public class AccountModel {
     @Column(name="userName")
     private String userName;
     @Column(name="password")
+
     private String password;
 
     public int getUserID() {
@@ -39,6 +41,4 @@ public class AccountModel {
     public void setPassword(String password) {
         this.password = password;
     }
-
-
 }

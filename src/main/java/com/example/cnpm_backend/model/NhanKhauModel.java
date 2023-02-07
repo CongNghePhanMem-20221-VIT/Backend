@@ -1,18 +1,51 @@
 package com.example.cnpm_backend.model;
 
-import java.util.Date;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+import java.util.Date;
+@Entity
+@Table(name = "nhankhau")
 public class NhanKhauModel {
+    @Id
+    @Column(name = "idcc")
     private String IDCC;
+    @Column(name = "hoten")
     private String hoTen;
+    @Column(name = "ngaysinh")
     private Date ngaySinh;
+    @Column(name = "nguyenquan")
     private String nguyenQuan;
+    @Column(name = "dantoc")
     private String danToc;
+    @Column(name = "quoctich")
     private String quocTich;
+    @Column(name = "nghenghiep")
     private String ngheNghiep;
+    @Column(name = "diachihientai")
     private String diaChiHienTai;
+    @Column(name = "diachithuongtru")
     private String diaChiThuongTru;
+    @Column(name = "gioitinh")
     private String gioiTinh;
+
+    public NhanKhauModel() {
+    }
+
+    public NhanKhauModel(String IDCC, String hoTen, Date ngaySinh, String nguyenQuan, String danToc, String quocTich, String ngheNghiep, String diaChiHienTai, String diaChiThuongTru, String gioiTinh) {
+        this.IDCC = IDCC;
+        this.hoTen = hoTen;
+        this.ngaySinh = ngaySinh;
+        this.nguyenQuan = nguyenQuan;
+        this.danToc = danToc;
+        this.quocTich = quocTich;
+        this.ngheNghiep = ngheNghiep;
+        this.diaChiHienTai = diaChiHienTai;
+        this.diaChiThuongTru = diaChiThuongTru;
+        this.gioiTinh = gioiTinh;
+    }
 
     public String getIDCC() {
         return IDCC;

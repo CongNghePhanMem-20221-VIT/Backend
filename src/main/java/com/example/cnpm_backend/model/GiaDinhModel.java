@@ -11,7 +11,7 @@ import java.util.Date;
 @Table(name = "giadinh")
 public class GiaDinhModel {
     @Id
-    @Column(name = "id")
+    @Column(name = "idgiadinh")
     private String idGiaDinh;
     @Column(name = "idhokhau")
     private int idHoKhau;

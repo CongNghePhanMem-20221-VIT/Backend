@@ -1,29 +1,39 @@
 package com.example.cnpm_backend.model;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import lombok.Data;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name="Account")
-@Data
+@Table(name="account")
+//@Data
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class AccountModel {
+
+    @Id
     @Column(name="userID")
-    private int userID;
-    @Column(name="userName")
+    private int userid;
+
+    @Column(name="username")
     private String userName;
     @Column(name="password")
-
     private String password;
 
+    public AccountModel(int userID, String userName, String password) {
+        this.userid = userID;
+        this.userName = userName;
+        this.password = password;
+    }
+
+    public AccountModel() {
+
+    }
+
     public int getUserID() {
-        return userID;
+        return userid;
     }
 
     public void setUserID(int userID) {
-        this.userID = userID;
+        this.userid = userID;
     }
 
     public String getUserName() {

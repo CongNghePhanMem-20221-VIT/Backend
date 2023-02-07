@@ -1,14 +1,39 @@
 package com.example.cnpm_backend.model;
 
-import java.util.Date;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+import java.util.Date;
+@Entity
+@Table(name = "hokhau")
 public class HoKhauModel {
+    @Id
+    @Column(name = "idhokhau")
     private int idHoKhau;
+    @Column(name = "idchuho")
     private int idChuHo;
+    @Column(name = "diachi")
     private String diaChi;
+    @Column(name = "ngaytao")
     private Date ngayTao;
+    @Column(name = "idkhuvuc")
     private String idKhuVuc;
+    @Column(name = "idgiadinh")
     private String idGiaDinh;
+
+    public HoKhauModel() {
+    }
+
+    public HoKhauModel(int idHoKhau, int idChuHo, String diaChi, Date ngayTao, String idKhuVuc, String idGiaDinh) {
+        this.idHoKhau = idHoKhau;
+        this.idChuHo = idChuHo;
+        this.diaChi = diaChi;
+        this.ngayTao = ngayTao;
+        this.idKhuVuc = idKhuVuc;
+        this.idGiaDinh = idGiaDinh;
+    }
 
     public int getIdHoKhau() {
         return idHoKhau;

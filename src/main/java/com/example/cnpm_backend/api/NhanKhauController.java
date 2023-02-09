@@ -28,4 +28,13 @@ public class NhanKhauController {
         }
         return new ResponseEntity<List<NhanKhauModel>>(listNhanKhau, HttpStatus.OK);
     }
+
+//    @RequestMapping(value = "/nhankhau/{id}", method = RequestMethod.GET)
+//    public Optional<NhanKhauModel> findNhanKhau(@PathVariable("id") int id){
+//        Optional<NhanKhauModel> NhanKhau = NhanKhauService.findById(id);
+//        if (NhanKhau == null){
+//            ResponseEntity.notFound().build();
+//        }
+//        return NhanKhau;
+//    }
 }

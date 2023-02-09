@@ -1,15 +1,17 @@
 package com.example.cnpm_backend.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.Date;
 @Entity
 @Table(name = "nhankhau")
-public class NhanKhauModel {
+public class NhanKhauModel implements Serializable {
+    private static int serialVersionUID = 1;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
     @Column(name = "idcc")
     private String IDCC;
     @Column(name = "hoten")

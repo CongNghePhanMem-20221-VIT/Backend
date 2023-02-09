@@ -28,4 +28,13 @@ public class HoKhauController {
         }
         return new ResponseEntity<List<HoKhauModel>>(listHoKhau, HttpStatus.OK);
     }
+
+//    @RequestMapping(value = "/hokhau/{id}", method = RequestMethod.GET)
+//    public Optional<HoKhauModel> findHoKhau(@PathVariable("id") int id){
+//        Optional<HoKhauModel> HoKhau = HoKhauService.findById(id);
+//        if (HoKhau == null){
+//            ResponseEntity.notFound().build();
+//        }
+//        return HoKhau;
+//    }
 }

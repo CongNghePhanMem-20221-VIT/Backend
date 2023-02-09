@@ -1,16 +1,19 @@
 package com.example.cnpm_backend.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "cancuoc")
-public class CanCuocModel {
+public class CanCuocModel implements Serializable {
+    private static final int serialVersionUID = 1;
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
     @Column(name = "idcc")
     private String IDCC;
 
@@ -19,16 +22,16 @@ public class CanCuocModel {
     @Column(name = "noicap")
     private String noiCap;
 
-    public CanCuocModel(String IDCC, Date ngayCap, String noiCap) {
+    public CanCuocModel(int id, String IDCC, Date ngayCap, String noiCap) {
+        this.id = id;
         this.IDCC = IDCC;
         this.ngayCap = ngayCap;
         this.noiCap = noiCap;
     }
 
     public CanCuocModel() {
-
+        id = 0;
     }
-
 
     public String getIDCC() {
         return IDCC;

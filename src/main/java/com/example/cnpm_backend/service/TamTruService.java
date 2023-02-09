@@ -1,9 +1,10 @@
 package com.example.cnpm_backend.service;
 
-import com.example.cnpm_backend.model.CanCuocModel;
+import com.example.cnpm_backend.model.TamTruModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CanCuocService extends JpaRepository<CanCuocModel, Integer> {
+public interface TamTruService extends JpaRepository<TamTruModel, Integer> {
+
 }

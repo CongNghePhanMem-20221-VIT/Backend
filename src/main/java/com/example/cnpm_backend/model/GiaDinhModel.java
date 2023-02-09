@@ -1,18 +1,21 @@
 package com.example.cnpm_backend.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "giadinh")
-public class GiaDinhModel {
+public class GiaDinhModel implements Serializable {
+    private static final int serialVersionUID = 1;
+
     @Id
-    @Column(name = "idgiadinh")
-    private String idGiaDinh;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "magiadinh")
+    private String maGiaDinh;
     @Column(name = "idhokhau")
     private int idHoKhau;
     @Column(name = "hoten")
@@ -27,10 +30,12 @@ public class GiaDinhModel {
     private String diaChiHienTai;
 
     public GiaDinhModel() {
+        id = 0;
     }
 
-    public GiaDinhModel(String idGiaDinh, int idHoKhau, String hoTen, Date ngaySinh, String ngheNghiep, String quanHeVoiChuHo, String diaChiHienTai) {
-        this.idGiaDinh = idGiaDinh;
+    public GiaDinhModel(int id, String maGiaDinh, int idHoKhau, String hoTen, Date ngaySinh, String ngheNghiep, String quanHeVoiChuHo, String diaChiHienTai) {
+        this.id = id;
+        this.maGiaDinh = maGiaDinh;
         this.idHoKhau = idHoKhau;
         this.hoTen = hoTen;
         this.ngaySinh = ngaySinh;
@@ -40,11 +45,11 @@ public class GiaDinhModel {
     }
 
     public String getIdGiaDinh() {
-        return idGiaDinh;
+        return maGiaDinh;
     }
 
     public void setIdGiaDinh(String idGiaDinh) {
-        this.idGiaDinh = idGiaDinh;
+        this.maGiaDinh = idGiaDinh;
     }
 
     public int getIdHoKhau() {

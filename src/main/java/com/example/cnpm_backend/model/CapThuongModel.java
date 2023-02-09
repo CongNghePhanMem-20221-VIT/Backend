@@ -17,21 +17,37 @@ public class CapThuongModel implements Serializable {
     @Column(name = "idnhankhau")
     private int idNhanKhau;
 
-    @Column(name = "phanthuong")
-    private int phanThuong;
+    @Column(name = "tienthuong")
+    private int tienThuong;
+
+    @Column(name = "sach")
+    private int sach;
+
+    @Column(name = "vo")
+    private int vo;
+
+    @Column(name = "qua")
+    private int qua;
 
     @Column(name = "idgiaithuong")
     private int idGiaiThuong;
+
+    @Column(name = "thanhtich")
+    private String thanhTich;
 
     public CapThuongModel() {
         id = 0;
     }
 
-    public CapThuongModel(int id, int idNhanKhau, int phanThuong, int idGiaiThuong) {
+    public CapThuongModel(int id, int idNhanKhau, int tienThuong, int sach, int vo, int qua, int idGiaiThuong, String thanhTich) {
         this.id = id;
         this.idNhanKhau = idNhanKhau;
-        this.phanThuong = phanThuong;
+        this.tienThuong = tienThuong;
+        this.sach = sach;
+        this.vo = vo;
+        this.qua = qua;
         this.idGiaiThuong = idGiaiThuong;
+        this.thanhTich = thanhTich;
     }
 
     public int getId() {
@@ -50,12 +66,36 @@ public class CapThuongModel implements Serializable {
         this.idNhanKhau = idNhanKhau;
     }
 
-    public int getPhanThuong() {
-        return phanThuong;
+    public int getTienThuong() {
+        return tienThuong;
     }
 
-    public void setPhanThuong(int phanThuong) {
-        this.phanThuong = phanThuong;
+    public void setTienThuong(int tienThuong) {
+        this.tienThuong = tienThuong;
+    }
+
+    public int getSach() {
+        return sach;
+    }
+
+    public void setSach(int sach) {
+        this.sach = sach;
+    }
+
+    public int getVo() {
+        return vo;
+    }
+
+    public void setVo(int vo) {
+        this.vo = vo;
+    }
+
+    public int getQua() {
+        return qua;
+    }
+
+    public void setQua(int qua) {
+        this.qua = qua;
     }
 
     public int getIdGiaiThuong() {
@@ -64,5 +104,13 @@ public class CapThuongModel implements Serializable {
 
     public void setIdGiaiThuong(int idGiaiThuong) {
         this.idGiaiThuong = idGiaiThuong;
+    }
+
+    public String getThanhTich() {
+        return thanhTich;
+    }
+
+    public void setThanhTich(String thanhTich) {
+        this.thanhTich = thanhTich;
     }
 }

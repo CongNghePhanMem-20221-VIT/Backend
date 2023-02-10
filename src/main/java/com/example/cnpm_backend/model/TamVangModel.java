@@ -11,10 +11,10 @@ public class TamVangModel implements Serializable {
     private static final int serialVersionUID = 1;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private int id;
 
-    @Column(name = "idcancuoc")
+    @Column(name = "IDcancuoc")
     private int idcc;
 
     @Column(name = "ngaybatdau")

@@ -9,10 +9,10 @@ import java.util.Date;
 public class NhanKhauModel implements Serializable {
     private static int serialVersionUID = 1;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="ID")
     private int id;
 
-    @Column(name = "idcc")
+    @Column(name = "IDcancuoc")
     private String IDCC;
     @Column(name = "hoten")
     private String hoTen;
@@ -36,7 +36,8 @@ public class NhanKhauModel implements Serializable {
     public NhanKhauModel() {
     }
 
-    public NhanKhauModel(String IDCC, String hoTen, Date ngaySinh, String nguyenQuan, String danToc, String quocTich, String ngheNghiep, String diaChiHienTai, String diaChiThuongTru, String gioiTinh) {
+    public NhanKhauModel(int id,String IDCC, String hoTen, Date ngaySinh, String nguyenQuan, String danToc, String quocTich, String ngheNghiep, String diaChiHienTai, String diaChiThuongTru, String gioiTinh) {
+        this.id = id;
         this.IDCC = IDCC;
         this.hoTen = hoTen;
         this.ngaySinh = ngaySinh;
@@ -49,6 +50,13 @@ public class NhanKhauModel implements Serializable {
         this.gioiTinh = gioiTinh;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getIDCC() {
         return IDCC;
     }

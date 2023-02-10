@@ -9,17 +9,17 @@ import java.util.Date;
 public class HoKhauModel implements Serializable {
     private static final int serialVersionUID = 1;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="IDhokhau")
     private int idHoKhau;
-    @Column(name = "idchuho")
+    @Column(name = "IDchuho")
     private int idChuHo;
     @Column(name = "diachi")
     private String diaChi;
     @Column(name = "ngaytao")
     private Date ngayTao;
-    @Column(name = "idkhuvuc")
+    @Column(name = "IDkhuvuc")
     private String idKhuVuc;
-    @Column(name = "idgiadinh")
+    @Column(name = "Magiadinh")
     private String idGiaDinh;
 
     public HoKhauModel() {

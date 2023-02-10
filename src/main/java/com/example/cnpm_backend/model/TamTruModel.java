@@ -11,10 +11,10 @@ public class TamTruModel implements Serializable {
     private static final int serialVersionUID = 1;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private int id;
 
-    @Column(name = "idcancuoc")
+    @Column(name = "IDcancuoc")
     private int idcc;
 
     @Column(name = "ngaybatdau")
@@ -26,7 +26,7 @@ public class TamTruModel implements Serializable {
     @Column(name = "lydo")
     private String lyDo;
 
-    @Column(name = "sodt")
+    @Column(name = "soDT")
     private String soDT;
 
     @Column(name = "matamtru")

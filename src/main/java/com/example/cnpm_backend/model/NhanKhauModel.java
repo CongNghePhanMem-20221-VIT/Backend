@@ -9,7 +9,7 @@ import java.util.Date;
 public class NhanKhauModel implements Serializable {
     private static int serialVersionUID = 1;
     @Id
-    @Column(name="ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "IDcancuoc")

@@ -44,6 +44,22 @@ public class GiaDinhModel implements Serializable {
         this.diaChiHienTai = diaChiHienTai;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getMaGiaDinh() {
+        return maGiaDinh;
+    }
+
+    public void setMaGiaDinh(String maGiaDinh) {
+        this.maGiaDinh = maGiaDinh;
+    }
+
     public String getIdGiaDinh() {
         return maGiaDinh;
     }

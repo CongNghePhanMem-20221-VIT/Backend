@@ -9,8 +9,11 @@ import java.util.Date;
 public class HoKhauModel implements Serializable {
     private static final int serialVersionUID = 1;
     @Id
-    @Column(name="IDhokhau")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idHoKhau;
+
+//    @Column(name="IDhokhau")
+//    private int idHoKhau;
     @Column(name = "IDchuho")
     private int idChuHo;
     @Column(name = "diachi")

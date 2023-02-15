@@ -30,6 +30,15 @@ public class NhanKhauController {
         return new ResponseEntity<List<NhanKhauModel>>(listNhanKhau, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/nhankhau/ll", method = RequestMethod.GET)
+    public ResponseEntity<List<NhanKhauModel>> listNhanKhauWithName(){
+        List<NhanKhauModel> listNhanKhau = nhanKhauService.findNhanKhauByName("Đinh Trọng Nghĩa");
+        if(listNhanKhau.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<NhanKhauModel>>(listNhanKhau, HttpStatus.OK);
+    }
+
     //    tạo mới liên hệ
     @RequestMapping(value = "/nhankhau/", method = RequestMethod.POST)
     public NhanKhauModel saveNhanKhau(@Valid @RequestBody NhanKhauModel nhanKhauModel){

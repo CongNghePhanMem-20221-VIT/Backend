@@ -2,6 +2,7 @@ package com.example.cnpm_backend.api;
 
 import com.example.cnpm_backend.model.AccountModel;
 import com.example.cnpm_backend.model.NhanKhauModel;
+import com.example.cnpm_backend.model.dto.NhanKhauGiaDinhDTO;
 import com.example.cnpm_backend.service.NhanKhauService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -30,13 +31,23 @@ public class NhanKhauController {
         return new ResponseEntity<List<NhanKhauModel>>(listNhanKhau, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/nhankhau/ll", method = RequestMethod.GET)
-    public ResponseEntity<List<NhanKhauModel>> listNhanKhauWithName(){
-        List<NhanKhauModel> listNhanKhau = nhanKhauService.findNhanKhauByName("Đinh Trọng Nghĩa");
+    // find nhan khau by name
+    @RequestMapping(value = "/nhankhau/timkiem", method = RequestMethod.GET)
+    public ResponseEntity<List<NhanKhauModel>> listNhanKhauWithName(@RequestBody NhanKhauModel nhankhauModel){
+        List<NhanKhauModel> listNhanKhau = nhanKhauService.findNhanKhauByName(nhankhauModel.getHoTen());
         if(listNhanKhau.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<List<NhanKhauModel>>(listNhanKhau, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/nhankhau/giadinh", method = RequestMethod.GET)
+    public ResponseEntity<List<NhanKhauGiaDinhDTO>> joinNhanKhauGiaDinh(){
+        List<NhanKhauGiaDinhDTO> listNhanKhauGiaDinh = nhanKhauService.joinNhanKhauGiaDinh();
+        if(listNhanKhauGiaDinh.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<NhanKhauGiaDinhDTO>>(listNhanKhauGiaDinh, HttpStatus.OK);
     }
 
     //    tạo mới liên hệ

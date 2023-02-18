@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,15 +25,6 @@ public class NhanKhauController {
     @RequestMapping(value = "/nhankhau/", method = RequestMethod.GET)
     public ResponseEntity<List<NhanKhauModel>> listAllNhanKhau(){
         List<NhanKhauModel> listNhanKhau = nhanKhauService.findAll();
-        if(listNhanKhau.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<List<NhanKhauModel>>(listNhanKhau, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/nhankhau/ll", method = RequestMethod.GET)
-    public ResponseEntity<List<NhanKhauModel>> listNhanKhauWithName(){
-        List<NhanKhauModel> listNhanKhau = nhanKhauService.findNhanKhauByName("Đinh Trọng Nghĩa");
         if(listNhanKhau.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -89,6 +81,16 @@ public class NhanKhauController {
 
         nhanKhauService.delete(nhanKhauModel.get());
         return ResponseEntity.ok().build();
-
     }
+
+    @RequestMapping(value = "/nhankhau/timkiem", method = RequestMethod.GET)
+    public ResponseEntity<List<NhanKhauModel>> listNhanKhauWithName(@RequestBody NhanKhauModel nhanKhauModel){
+        List<NhanKhauModel> listNhanKhau = nhanKhauService.findNhanKhauByName(nhanKhauModel.getHoTen());
+        if(listNhanKhau.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<NhanKhauModel>>(listNhanKhau, HttpStatus.OK);
+    }
+
+
 }

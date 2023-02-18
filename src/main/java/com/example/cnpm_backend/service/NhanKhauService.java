@@ -11,6 +11,8 @@ import java.util.List;
 @Repository
 public interface NhanKhauService extends JpaRepository<NhanKhauModel, Integer> {
 
-    @Query(value = "select * from nhankhau nk where nk.hoten = :name", nativeQuery = true)
+
+
+    @Query(value = "select * from nhankhau nk where nk.hoten = :name ", nativeQuery = true)
     List<NhanKhauModel> findNhanKhauByName(@Param("name") String name);
 }

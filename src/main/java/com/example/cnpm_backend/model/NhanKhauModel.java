@@ -1,9 +1,13 @@
 package com.example.cnpm_backend.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
+
 @Entity
 @Table(name = "nhankhau")
 public class NhanKhauModel implements Serializable {
@@ -32,6 +36,9 @@ public class NhanKhauModel implements Serializable {
     private String diaChiThuongTru;
     @Column(name = "gioitinh")
     private String gioiTinh;
+
+//    @OneToMany(targetEntity = GiaDinhModel.class, mappedBy = "IDnhankhau", orphanRemoval = false, fetch = FetchType.LAZY)
+//    private Set<GiaDinhModel> giaDinhModels;
 
     public NhanKhauModel() {
     }

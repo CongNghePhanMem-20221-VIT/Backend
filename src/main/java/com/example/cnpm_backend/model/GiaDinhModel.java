@@ -1,6 +1,8 @@
 package com.example.cnpm_backend.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -28,6 +30,11 @@ public class GiaDinhModel implements Serializable {
     private String quanHeVoiChuHo;
     @Column(name = "diachihientai")
     private String diaChiHienTai;
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "ID", insertable = false, updatable = false)
+//    @Fetch(FetchMode.JOIN)
+//    private NhanKhauModel nhanKhauModel;
 
     public GiaDinhModel() {
         id = 0;

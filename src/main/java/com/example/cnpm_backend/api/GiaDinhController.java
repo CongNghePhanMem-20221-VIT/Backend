@@ -56,8 +56,9 @@ public class GiaDinhController {
         if(giaDinhService == null) {
             return ResponseEntity.notFound().build();
         }
-        giaDinhModel.get().setIdGiaDinh(giaDinhForm.getIdGiaDinh());
+        giaDinhModel.get().setId(giaDinhForm.getId());
         giaDinhModel.get().setHoTen(giaDinhForm.getHoTen());
+        giaDinhModel.get().setIdNhanKhau((giaDinhForm.getIdNhanKhau()));
         giaDinhModel.get().setDiaChiHienTai(giaDinhForm.getDiaChiHienTai());
         giaDinhModel.get().setIdHoKhau(giaDinhForm.getIdHoKhau());
         giaDinhModel.get().setNgaySinh(giaDinhForm.getNgaySinh());

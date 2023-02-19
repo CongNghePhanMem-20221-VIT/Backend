@@ -11,28 +11,30 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class NhanKhauGiaDinhDTO {
 
+public class HoKhauGiaDinhCanCuocDTO {
     private int id;
-    private int IDCC;
+
+    private String diaChi;
+
+    private Date ngayTao;
+
+    private String idKhuVuc;
+
+    private String idGiaDinh;
 
     private String hoTen;
+
     private Date ngaySinh;
-
-    private String nguyenQuan;
-
-    private String danToc;
-
-    private String quocTich;
 
     private String ngheNghiep;
 
+    private String quanHeVoiChuHo;
+
     private String diaChiHienTai;
 
-    private String diaChiThuongTru;
+    private String canCuoc;
 
-    private String gioiTinh;
 
-    private String maGiaDinh;
 
 }

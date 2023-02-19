@@ -1,5 +1,7 @@
 package com.example.cnpm_backend.model.dto;
 
+
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,19 +13,17 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class NhanKhauGiaDinhDTO {
 
+public class CanCuocTamTruDTO {
     private int id;
-    private int IDCC;
+
+    private String idcc;
 
     private String hoTen;
-    private Date ngaySinh;
 
-    private String nguyenQuan;
+    private String gioiTinh;
 
-    private String danToc;
-
-    private String quocTich;
+    private String soDT;
 
     private String ngheNghiep;
 
@@ -31,8 +31,11 @@ public class NhanKhauGiaDinhDTO {
 
     private String diaChiThuongTru;
 
-    private String gioiTinh;
+    private Date ngayBatDau;
 
-    private String maGiaDinh;
+    private Date ngayKetThuc;
 
+    private String lyDo;
+
+    private String maTamTru;
 }

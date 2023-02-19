@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -25,9 +26,10 @@ public class NhanKhauModel implements Serializable {
     private int id;
 
     @Column(name = "IDcancuoc")
-    private String IDCC;
+    private int IDCC;
     @Column(name = "hoten")
     private String hoTen;
+
     @Column(name = "ngaysinh")
     private Date ngaySinh;
     @Column(name = "nguyenquan")
@@ -45,6 +47,4 @@ public class NhanKhauModel implements Serializable {
     @Column(name = "gioitinh")
     private String gioiTinh;
 
-//    @OneToMany(targetEntity = GiaDinhModel.class, mappedBy = "idNhanKhau", orphanRemoval = false, fetch = FetchType.LAZY)
-//    private Set<GiaDinhModel> giaDinh;
 }

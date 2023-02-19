@@ -2,6 +2,7 @@ package com.example.cnpm_backend.api;
 
 import com.example.cnpm_backend.model.AccountModel;
 import com.example.cnpm_backend.model.CapThuongModel;
+import com.example.cnpm_backend.model.dto.CapThuongNhanKhauDTO;
 import com.example.cnpm_backend.service.CapThuongService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -82,4 +83,15 @@ public class CapThuongController {
         return ResponseEntity.ok().build();
 
     }
+
+    //tìm danh sach phan thuong cua moi nhan khau
+    @RequestMapping(value = "/capthuong/nhankhau", method = RequestMethod.GET)
+    public ResponseEntity<List<CapThuongNhanKhauDTO>> joinCapThuongNhanKhau(){
+        List<CapThuongNhanKhauDTO> listCapThuongNhanKhau = capThuongService.joinCapThuongNhanKhau();
+        if(listCapThuongNhanKhau.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<CapThuongNhanKhauDTO>>(listCapThuongNhanKhau, HttpStatus.OK);
+    }
+
 }

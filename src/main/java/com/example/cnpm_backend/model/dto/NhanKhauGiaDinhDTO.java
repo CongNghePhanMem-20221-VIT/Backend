@@ -15,6 +15,7 @@ public class NhanKhauGiaDinhDTO {
 
     private int id;
     private int IDCC;
+
     private String hoTen;
     private Date ngaySinh;
 

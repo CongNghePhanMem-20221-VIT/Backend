@@ -14,17 +14,17 @@ public class CanCuocModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "idcc")
-    private String IDCC;
+    @Column(name = "IDCC")
+    private String idcc;
 
     @Column(name = "ngaycap")
     private Date ngayCap;
     @Column(name = "noicap")
     private String noiCap;
 
-    public CanCuocModel(int id, String IDCC, Date ngayCap, String noiCap) {
+    public CanCuocModel(int id, String idcc, Date ngayCap, String noiCap) {
         this.id = id;
-        this.IDCC = IDCC;
+        this.idcc = idcc;
         this.ngayCap = ngayCap;
         this.noiCap = noiCap;
     }
@@ -42,11 +42,11 @@ public class CanCuocModel implements Serializable {
     }
 
     public String getIDCC() {
-        return IDCC;
+        return idcc;
     }
 
     public void setIDCC(String IDCC) {
-        this.IDCC = IDCC;
+        this.idcc = idcc;
     }
 
     public Date getNgayCap() {

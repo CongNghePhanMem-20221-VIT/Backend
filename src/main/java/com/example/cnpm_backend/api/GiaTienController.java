@@ -1,6 +1,7 @@
 package com.example.cnpm_backend.api;
 
 import com.example.cnpm_backend.model.GiaTienModel;
+import com.example.cnpm_backend.model.dto.GiaTienGiaiThuongDTO;
 import com.example.cnpm_backend.service.GiaTienService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -75,4 +76,15 @@ public class GiaTienController {
         return ResponseEntity.ok().build();
 
     }
+
+    //tìm tất cả liên hệ của Gia tien, giai thuong
+    @RequestMapping(value = "/tienthuong/giaithuong", method = RequestMethod.GET)
+    public ResponseEntity<List<GiaTienGiaiThuongDTO>> joinGiaTienGiaiThuong(){
+        List<GiaTienGiaiThuongDTO> listNhanKhauGiaDinh = giaTienService.joinGiaTienGiaiThuong();
+        if(listNhanKhauGiaDinh.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<GiaTienGiaiThuongDTO>>(listNhanKhauGiaDinh, HttpStatus.OK);
+    }
+
 }

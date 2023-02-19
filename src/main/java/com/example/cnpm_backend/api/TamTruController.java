@@ -2,6 +2,7 @@ package com.example.cnpm_backend.api;
 
 import com.example.cnpm_backend.model.AccountModel;
 import com.example.cnpm_backend.model.TamTruModel;
+import com.example.cnpm_backend.model.dto.CanCuocTamTruDTO;
 import com.example.cnpm_backend.service.TamTruService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -77,5 +78,16 @@ public class TamTruController {
         return ResponseEntity.ok().build();
 
     }
+
+    //tìm danh sach tam tru
+    @RequestMapping(value = "/tamtru/danhsach", method = RequestMethod.GET)
+    public ResponseEntity<List<CanCuocTamTruDTO>> joinCanCuocTamTru(){
+        List<CanCuocTamTruDTO> listHoKhauGiaDinhCanCuoc = tamTruService.joinCanCuocTamTru();
+        if(listHoKhauGiaDinhCanCuoc.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<CanCuocTamTruDTO>>(listHoKhauGiaDinhCanCuoc, HttpStatus.OK);
+    }
+
 
 }

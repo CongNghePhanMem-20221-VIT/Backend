@@ -20,6 +20,9 @@ public class GiaDinhModel implements Serializable {
     private String maGiaDinh;
     @Column(name = "idhokhau")
     private int idHoKhau;
+
+    @Column(name = "idnhankhau")
+    private int idNhanKhau;
     @Column(name = "hoten")
     private String hoTen;
     @Column(name = "ngaysinh")
@@ -31,19 +34,15 @@ public class GiaDinhModel implements Serializable {
     @Column(name = "diachihientai")
     private String diaChiHienTai;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "ID", insertable = false, updatable = false)
-//    @Fetch(FetchMode.JOIN)
-//    private NhanKhauModel nhanKhauModel;
-
     public GiaDinhModel() {
         id = 0;
     }
 
-    public GiaDinhModel(int id, String maGiaDinh, int idHoKhau, String hoTen, Date ngaySinh, String ngheNghiep, String quanHeVoiChuHo, String diaChiHienTai) {
+    public GiaDinhModel(int id, String maGiaDinh, int idHoKhau, int idNhanKhau, String hoTen, Date ngaySinh, String ngheNghiep, String quanHeVoiChuHo, String diaChiHienTai) {
         this.id = id;
         this.maGiaDinh = maGiaDinh;
         this.idHoKhau = idHoKhau;
+        this.idNhanKhau = idNhanKhau;
         this.hoTen = hoTen;
         this.ngaySinh = ngaySinh;
         this.ngheNghiep = ngheNghiep;
@@ -67,20 +66,20 @@ public class GiaDinhModel implements Serializable {
         this.maGiaDinh = maGiaDinh;
     }
 
-    public String getIdGiaDinh() {
-        return maGiaDinh;
-    }
-
-    public void setIdGiaDinh(String idGiaDinh) {
-        this.maGiaDinh = idGiaDinh;
-    }
-
     public int getIdHoKhau() {
         return idHoKhau;
     }
 
     public void setIdHoKhau(int idHoKhau) {
         this.idHoKhau = idHoKhau;
+    }
+
+    public int getIdNhanKhau() {
+        return idNhanKhau;
+    }
+
+    public void setIdNhanKhau(int idNhanKhau) {
+        this.idNhanKhau = idNhanKhau;
     }
 
     public String getHoTen() {

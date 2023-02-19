@@ -2,6 +2,10 @@ package com.example.cnpm_backend.api;
 
 import com.example.cnpm_backend.model.AccountModel;
 import com.example.cnpm_backend.model.HoKhauModel;
+import com.example.cnpm_backend.model.dto.HoKhauGiaDinhCanCuocDTO;
+import com.example.cnpm_backend.model.dto.HoKhauGiaDinhDTO;
+import com.example.cnpm_backend.model.dto.NhanKhauCapThuongDTO;
+import com.example.cnpm_backend.model.dto.NhanKhauGiaDinhDTO;
 import com.example.cnpm_backend.service.HoKhauService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -38,9 +42,9 @@ public class HoKhauController {
     }
 
     //    lấy một liên hệ
-    @RequestMapping(value = "/hokhau/{idHoKhau}", method = RequestMethod.GET)
-    public Optional<HoKhauModel> findHoKhau(@PathVariable("idHoKhau") int idHoKhau) {
-        Optional<HoKhauModel> hoKhauModel= hoKhauService.findById(idHoKhau);
+    @RequestMapping(value = "/hokhau/{idhokhau}", method = RequestMethod.GET)
+    public Optional<HoKhauModel> findHoKhau(@PathVariable("idhokhau") int idhokhau) {
+        Optional<HoKhauModel> hoKhauModel= hoKhauService.findById(idhokhau);
         if(hoKhauModel == null) {
             ResponseEntity.notFound().build();
         }
@@ -48,10 +52,10 @@ public class HoKhauController {
     }
 
     //    update liên hệ
-    @RequestMapping(value = "/hokhau/{idHoKhau}", method = RequestMethod.PUT)
-    public ResponseEntity<HoKhauModel> updateHoKhau(@PathVariable(value = "idHoKhau") int idHoKhau,
+    @RequestMapping(value = "/hokhau/{idhokhau}", method = RequestMethod.PUT)
+    public ResponseEntity<HoKhauModel> updateHoKhau(@PathVariable(value = "idhokhau") int idhokhau,
                                                       @Valid @RequestBody HoKhauModel hoKhauForm) {
-        Optional<HoKhauModel> hoKhauModel = hoKhauService.findById(idHoKhau);
+        Optional<HoKhauModel> hoKhauModel = hoKhauService.findById(idhokhau);
         if(hoKhauService == null) {
             return ResponseEntity.notFound().build();
         }
@@ -67,9 +71,9 @@ public class HoKhauController {
     }
 
     ////    xóa liên hệ
-    @RequestMapping(value = "/hokhau/{idHoKhau}", method = RequestMethod.DELETE)
-    public ResponseEntity<HoKhauModel> deleteHoKhau(@PathVariable(value = "idHoKhau") int idHoKhau) {
-        Optional<HoKhauModel> hoKhauModel = hoKhauService.findById(idHoKhau);
+    @RequestMapping(value = "/hokhau/{idhokhau}", method = RequestMethod.DELETE)
+    public ResponseEntity<HoKhauModel> deleteHoKhau(@PathVariable(value = "idhokhau") int idhokhau) {
+        Optional<HoKhauModel> hoKhauModel = hoKhauService.findById(idhokhau);
         if(hoKhauModel == null) {
             return ResponseEntity.notFound().build();
         }
@@ -78,4 +82,26 @@ public class HoKhauController {
         return ResponseEntity.ok().build();
 
     }
+
+    //tìm tất cả liên hệ của ho khẩu, gia đình
+    @RequestMapping(value = "/hokhau/giadinh", method = RequestMethod.GET)
+    public ResponseEntity<List<HoKhauGiaDinhDTO>> joinHoKhauGiaDinh(){
+        List<HoKhauGiaDinhDTO> listHoKhauGiaDinh = hoKhauService.joinHoKhauGiaDinh();
+        if(listHoKhauGiaDinh.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<HoKhauGiaDinhDTO>>(listHoKhauGiaDinh, HttpStatus.OK);
+    }
+
+    //tìm tất cả liên hệ của ho khau, chu ho, can cuoc
+    @RequestMapping(value = "/hokhau/chuho", method = RequestMethod.GET)
+    public ResponseEntity<List<HoKhauGiaDinhCanCuocDTO>> joinHoKhauGiaDinhCanCuoc(){
+        List<HoKhauGiaDinhCanCuocDTO> listHoKhauGiaDinhCanCuoc = hoKhauService.joinHoKhauGiaDinhCanCuoc();
+        if(listHoKhauGiaDinhCanCuoc.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<HoKhauGiaDinhCanCuocDTO>>(listHoKhauGiaDinhCanCuoc, HttpStatus.OK);
+    }
+
+
 }

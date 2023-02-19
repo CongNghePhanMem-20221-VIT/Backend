@@ -2,6 +2,9 @@ package com.example.cnpm_backend.api;
 
 import com.example.cnpm_backend.model.AccountModel;
 import com.example.cnpm_backend.model.NhanKhauModel;
+import com.example.cnpm_backend.model.dto.NhanKhauCapThuongDTO;
+import com.example.cnpm_backend.model.dto.NhanKhauGiaDinhDTO;
+import com.example.cnpm_backend.model.dto.NhanKhauCanCuocDTO;
 import com.example.cnpm_backend.service.NhanKhauService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -31,6 +34,47 @@ public class NhanKhauController {
         return new ResponseEntity<List<NhanKhauModel>>(listNhanKhau, HttpStatus.OK);
     }
 
+    // tìm 1 liên hệ
+    @RequestMapping(value = "/nhankhau/timkiem", method = RequestMethod.GET)
+    public ResponseEntity<List<NhanKhauModel>> listNhanKhauWithName(@RequestBody NhanKhauModel nhankhauModel){
+        List<NhanKhauModel> listNhanKhau = nhanKhauService.findNhanKhauByName(nhankhauModel.getHoTen());
+        if(listNhanKhau.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<NhanKhauModel>>(listNhanKhau, HttpStatus.OK);
+    }
+
+    //tìm tất cả liên hệ của nhân khẩu, gia đình
+    @RequestMapping(value = "/nhankhau/giadinh", method = RequestMethod.GET)
+    public ResponseEntity<List<NhanKhauGiaDinhDTO>> joinNhanKhauGiaDinh(){
+        List<NhanKhauGiaDinhDTO> listNhanKhauGiaDinh = nhanKhauService.joinNhanKhauGiaDinh();
+        if(listNhanKhauGiaDinh.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<NhanKhauGiaDinhDTO>>(listNhanKhauGiaDinh, HttpStatus.OK);
+    }
+
+    //tìm tất cả liên hệ của nhân khẩu, can cước
+    @RequestMapping(value = "/nhankhau/cancuoc", method = RequestMethod.GET)
+    public ResponseEntity<List<NhanKhauCanCuocDTO>> joinNhanKhauCanCuoc(){
+        List<NhanKhauCanCuocDTO> listNhanKhauCanCuoc = nhanKhauService.joinNhanKhauCanCuoc();
+        if(listNhanKhauCanCuoc.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<NhanKhauCanCuocDTO>>(listNhanKhauCanCuoc, HttpStatus.OK);
+    }
+
+    //tìm tất cả liên hệ của nhân khẩu, cap thuong
+    @RequestMapping(value = "/nhankhau/capthuong", method = RequestMethod.GET)
+    public ResponseEntity<List<NhanKhauCapThuongDTO>> joinNhanKhauCapThuong(){
+        List<NhanKhauCapThuongDTO> listNhanKhauCapThuong = nhanKhauService.joinNhanKhauCapThuong();
+        if(listNhanKhauCapThuong.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<NhanKhauCapThuongDTO>>(listNhanKhauCapThuong, HttpStatus.OK);
+    }
+
+
     //    tạo mới liên hệ
     @RequestMapping(value = "/nhankhau/", method = RequestMethod.POST)
     public NhanKhauModel saveNhanKhau(@Valid @RequestBody NhanKhauModel nhanKhauModel){
@@ -50,7 +94,7 @@ public class NhanKhauController {
     //    update liên hệ
     @RequestMapping(value = "/nhankhau/{id}", method = RequestMethod.PUT)
     public ResponseEntity<NhanKhauModel> updateNhanKhau(@PathVariable(value = "id") int id,
-                                                      @Valid @RequestBody NhanKhauModel nhanKhauForm) {
+                                                        @Valid @RequestBody NhanKhauModel nhanKhauForm) {
         Optional<NhanKhauModel> nhanKhauModel = nhanKhauService.findById(id);
         if(nhanKhauService == null) {
             return ResponseEntity.notFound().build();
@@ -75,22 +119,12 @@ public class NhanKhauController {
     @RequestMapping(value = "/nhankhau/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<NhanKhauModel> deleteNhanKhau(@PathVariable(value = "id") int id) {
         Optional<NhanKhauModel> nhanKhauModel = nhanKhauService.findById(id);
-        if(nhanKhauModel == null) {
+        if (nhanKhauModel == null) {
             return ResponseEntity.notFound().build();
         }
 
         nhanKhauService.delete(nhanKhauModel.get());
         return ResponseEntity.ok().build();
     }
-
-    @RequestMapping(value = "/nhankhau/timkiem", method = RequestMethod.GET)
-    public ResponseEntity<List<NhanKhauModel>> listNhanKhauWithName(@RequestBody NhanKhauModel nhanKhauModel){
-        List<NhanKhauModel> listNhanKhau = nhanKhauService.findNhanKhauByName(nhanKhauModel.getHoTen());
-        if(listNhanKhau.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<List<NhanKhauModel>>(listNhanKhau, HttpStatus.OK);
-    }
-
 
 }

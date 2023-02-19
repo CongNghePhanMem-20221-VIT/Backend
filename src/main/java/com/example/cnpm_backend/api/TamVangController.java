@@ -2,6 +2,7 @@ package com.example.cnpm_backend.api;
 
 import com.example.cnpm_backend.model.AccountModel;
 import com.example.cnpm_backend.model.TamVangModel;
+import com.example.cnpm_backend.model.dto.CanCuocTamVangDTO;
 import com.example.cnpm_backend.service.TamVangService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -75,7 +76,16 @@ public class TamVangController {
 
         tamVangService.delete(tamVangModel.get());
         return ResponseEntity.ok().build();
+    }
 
+    //tìm danh sach tam vang
+    @RequestMapping(value = "/tamvang/danhsach", method = RequestMethod.GET)
+    public ResponseEntity<List<CanCuocTamVangDTO>> joinCanCuocTamVang(){
+        List<CanCuocTamVangDTO> listHoKhauGiaDinhCanCuoc = tamVangService.joinCanCuocTamVang();
+        if(listHoKhauGiaDinhCanCuoc.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<CanCuocTamVangDTO>>(listHoKhauGiaDinhCanCuoc, HttpStatus.OK);
     }
 
 }

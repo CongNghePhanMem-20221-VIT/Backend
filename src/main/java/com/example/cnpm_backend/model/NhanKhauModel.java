@@ -47,5 +47,4 @@ public class NhanKhauModel implements Serializable {
     @Column(name = "gioitinh")
     private String gioiTinh;
 
-
 }

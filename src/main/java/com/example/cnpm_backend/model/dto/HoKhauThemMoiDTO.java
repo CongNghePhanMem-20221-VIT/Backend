@@ -1,6 +1,16 @@
 package com.example.cnpm_backend.model.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.Date;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 
 public class HoKhauThemMoiDTO {
 
@@ -30,5 +40,9 @@ public class HoKhauThemMoiDTO {
 
     private String maGiaDinh;
 
-    private String quanHeVoiChuHo;
+//    private Date ngayTao;
+
+    private String diaChi;
+
+    private String idKhuVuc;
 }

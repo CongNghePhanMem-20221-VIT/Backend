@@ -34,4 +34,6 @@ public class NhanKhauGiaDinhDTO {
 
     private String maGiaDinh;
 
+    private String quanHeVoiChuHo;
+
 }

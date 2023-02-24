@@ -126,5 +126,4 @@ public class NhanKhauController {
         nhanKhauService.delete(nhanKhauModel.get());
         return ResponseEntity.ok().build();
     }
-
 }

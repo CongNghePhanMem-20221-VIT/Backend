@@ -87,5 +87,4 @@ public class GiaTienController {
         }
         return new ResponseEntity<List<GiaTienGiaiThuongDTO>>(listNhanKhauGiaDinh, HttpStatus.OK);
     }
-
 }

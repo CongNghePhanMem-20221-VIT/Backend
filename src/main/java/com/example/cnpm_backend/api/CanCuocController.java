@@ -55,7 +55,7 @@ public class CanCuocController {
         if(canCuocService == null) {
             return ResponseEntity.notFound().build();
         }
-        canCuocModel.get().setIDCC(canCuocForm.getIDCC());
+        canCuocModel.get().setIdcc(canCuocForm.getIdcc());
         canCuocModel.get().setNgayCap(canCuocForm.getNgayCap());
         canCuocModel.get().setNoiCap(canCuocForm.getNoiCap());
 

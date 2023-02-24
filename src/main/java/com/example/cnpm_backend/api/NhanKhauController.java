@@ -71,10 +71,10 @@ public class NhanKhauController {
         return new ResponseEntity<List<NhanKhauCanCuocDTO>>(listNhanKhauCanCuoc, HttpStatus.OK);
     }
 
-    //tìm tất cả liên hệ của nhân khẩu, cap thuong
-    @RequestMapping(value = "/nhankhau/capthuong", method = RequestMethod.GET)
-    public ResponseEntity<List<NhanKhauCapThuongDTO>> joinNhanKhauCapThuong(){
-        List<NhanKhauCapThuongDTO> listNhanKhauCapThuong = nhanKhauService.joinNhanKhauCapThuong();
+    //tìm tất cả liên hệ của nhân khẩu, cap thuong theo idGiaiThuong
+    @RequestMapping(value = "/nhankhau/capthuong/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<NhanKhauCapThuongDTO>> joinNhanKhauCapThuong(@PathVariable("id") int id){
+        List<NhanKhauCapThuongDTO> listNhanKhauCapThuong = nhanKhauService.joinNhanKhauCapThuong(id);
         if(listNhanKhauCapThuong.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

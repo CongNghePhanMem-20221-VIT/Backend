@@ -42,10 +42,10 @@ public class TamTruController {
         return tamTru;
     }
     //    tạo mới liên hệ
-    @RequestMapping(value = "/tamtru/", method = RequestMethod.POST)
-    public TamTruModel saveTamTru(@Valid @RequestBody TamTruModel tamTruModel){
-        return tamTruService.save(tamTruModel);
-    }
+//    @RequestMapping(value = "/tamtru/", method = RequestMethod.POST)
+//    public TamTruModel saveTamTru(@Valid @RequestBody TamTruModel tamTruModel){
+//        return tamTruService.save(tamTruModel);
+//    }
 
     //    update liên hệ
     @RequestMapping(value = "/tamtru/{id}", method = RequestMethod.PUT)

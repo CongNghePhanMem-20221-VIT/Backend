@@ -30,8 +30,9 @@ public interface NhanKhauService extends JpaRepository<NhanKhauModel, Integer> {
     List<NhanKhauCanCuocDTO> joinNhanKhauCanCuoc();
 
     @Query(value = "select new com.example.cnpm_backend.model.dto.NhanKhauCapThuongDTO" +
-            "(nk.id, nk.IDCC, nk.hoTen, nk.ngaySinh, nk.nguyenQuan, nk.danToc, nk.quocTich, nk.ngheNghiep, nk.diaChiHienTai, nk.diaChiThuongTru, nk.gioiTinh, ct.tienThuong, ct.sach, ct.vo, ct.qua, ct.thanhTich ) " +
-            "from NhanKhauModel nk, CapThuongModel ct where nk.id = ct.idNhanKhau")
-    List<NhanKhauCapThuongDTO> joinNhanKhauCapThuong();
+
+            "(nk.id, nk.IDCC, nk.hoTen, nk.ngaySinh, nk.nguyenQuan, nk.danToc, nk.quocTich, nk.ngheNghiep, nk.diaChiHienTai, nk.diaChiThuongTru, nk.gioiTinh, ct.tienThuong, ct.sach, ct.vo, ct.qua, ct.thanhTich, gt.id, gt.tenGiai) " +
+            "from NhanKhauModel nk, CapThuongModel ct, GiaiThuongModel gt where nk.id = ct.idNhanKhau and gt.id = ct.idGiaiThuong and gt.id = :idphanthuong")
+    List<NhanKhauCapThuongDTO> joinNhanKhauCapThuong(@Param("idphanthuong") int idphanthuong);
 
 }

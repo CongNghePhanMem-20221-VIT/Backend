@@ -79,9 +79,9 @@ public class GiaTienController {
     }
 
     //tìm tất cả liên hệ của Gia tien, giai thuong
-    @RequestMapping(value = "/tienthuong/giaithuong", method = RequestMethod.GET)
-    public ResponseEntity<List<GiaTienGiaiThuongDTO>> joinGiaTienGiaiThuong(){
-        List<GiaTienGiaiThuongDTO> listNhanKhauGiaDinh = giaTienService.joinGiaTienGiaiThuong();
+    @RequestMapping(value = "/tienthuong/giaithuong/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<GiaTienGiaiThuongDTO>> joinGiaTienGiaiThuong(@PathVariable(value = "id") int id){
+        List<GiaTienGiaiThuongDTO> listNhanKhauGiaDinh = giaTienService.joinGiaTienGiaiThuong(id);
         if(listNhanKhauGiaDinh.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

@@ -2,6 +2,7 @@ package com.example.cnpm_backend.api;
 
 import com.example.cnpm_backend.model.AccountModel;
 import com.example.cnpm_backend.model.GiaDinhModel;
+import com.example.cnpm_backend.model.NhanKhauModel;
 import com.example.cnpm_backend.service.GiaDinhService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -33,14 +34,14 @@ public class GiaDinhController {
     }
 
     //    lấy một liên hệ
-    @RequestMapping(value = "/giadinh/{id}", method = RequestMethod.GET)
-    public Optional<GiaDinhModel> findGiaDinh(@PathVariable("id") int id){
-        Optional<GiaDinhModel> giaDinh = giaDinhService.findById(id);
-        if (giaDinh == null){
-            ResponseEntity.notFound().build();
-        }
-        return giaDinh;
-    }
+//    @RequestMapping(value = "/giadinh/{id}", method = RequestMethod.GET)
+//    public Optional<GiaDinhModel> findGiaDinh(@PathVariable("id") int id){
+//        Optional<GiaDinhModel> giaDinh = giaDinhService.findById(id);
+//        if (giaDinh == null){
+//            ResponseEntity.notFound().build();
+//        }
+//        return giaDinh;
+//    }
     
     //    tạo mới liên hệ
     @RequestMapping(value = "/giadinh/", method = RequestMethod.POST)
@@ -81,5 +82,15 @@ public class GiaDinhController {
         giaDinhService.delete(giaDinhModel.get());
         return ResponseEntity.ok().build();
 
+    }
+
+    //    lấy một liên hệ
+    @RequestMapping(value = "/giadinh/{maGiaDinh}", method = RequestMethod.GET)
+    public ResponseEntity<List<GiaDinhModel>> listGiaDinhWithMa(@RequestBody GiaDinhModel giaDinhModel){
+        List<GiaDinhModel> listGiaDinh = giaDinhService.findGiaDinhByMa(giaDinhModel.getMaGiaDinh());
+        if(listGiaDinh.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<GiaDinhModel>>(listGiaDinh, HttpStatus.OK);
     }
 }

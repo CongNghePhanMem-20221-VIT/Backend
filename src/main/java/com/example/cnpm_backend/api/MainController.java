@@ -75,5 +75,19 @@ public class MainController {
         return ResponseEntity.ok(nk);
     }
 
+    @RequestMapping(value = "/nhankhau/them", method = RequestMethod.POST)
+    public ResponseEntity<NhanKhauThemMoiDTO> saveNhanKhau(@Valid @RequestBody NhanKhauThemMoiDTO nk){
+//        System.out.println(nk.getCanCuoc());
+        CanCuocModel canCuocModel = new CanCuocModel(0, nk.getCanCuoc(), nk.getNgayCap(), nk.getNoiCap());
+        int idcc = canCuocService.save(canCuocModel).getId();
+
+        NhanKhauModel nhanKhauModel = new NhanKhauModel(0, idcc, nk.getHoTen(),nk.getNgaySinh(),
+                nk.getNguyenQuan(),nk.getDanToc(),nk.getQuocTich(), nk.getNgheNghiep(), nk.getDiaChiHienTai(),
+                nk.getDiaChiThuongTru(),nk.getGioiTinh());
+
+        nhanKhauService.save(nhanKhauModel);
+
+        return ResponseEntity.ok(nk);
+    }
 
 }

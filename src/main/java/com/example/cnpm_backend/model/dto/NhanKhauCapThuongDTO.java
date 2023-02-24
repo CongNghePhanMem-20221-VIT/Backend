@@ -43,4 +43,8 @@ public class NhanKhauCapThuongDTO {
     private int qua;
 
     private String thanhTich;
+
+    private int idGiaiThuong;
+
+    private String tenGiai;
 }

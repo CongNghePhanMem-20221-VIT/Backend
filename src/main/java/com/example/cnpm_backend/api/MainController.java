@@ -1,16 +1,11 @@
 package com.example.cnpm_backend.api;
 
-import com.example.cnpm_backend.model.CanCuocModel;
-import com.example.cnpm_backend.model.GiaDinhModel;
-import com.example.cnpm_backend.model.NhanKhauModel;
-import com.example.cnpm_backend.model.HoKhauModel;
+import com.example.cnpm_backend.model.*;
 
+import com.example.cnpm_backend.model.dto.CanCuocTamTruDTO;
 import com.example.cnpm_backend.model.dto.NhanKhauThemMoiDTO;
 import com.example.cnpm_backend.model.dto.HoKhauThemMoiDTO;
-import com.example.cnpm_backend.service.CanCuocService;
-import com.example.cnpm_backend.service.GiaDinhService;
-import com.example.cnpm_backend.service.HoKhauService;
-import com.example.cnpm_backend.service.NhanKhauService;
+import com.example.cnpm_backend.service.*;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +29,8 @@ public class MainController {
     GiaDinhService giaDinhService;
     @Autowired
     HoKhauService hoKhauService;
+    @Autowired
+    TamTruService tamTruService;
 
     @RequestMapping(value = "/nhankhau/themmoi", method = RequestMethod.POST)
     public ResponseEntity<NhanKhauThemMoiDTO> saveCanCuoc(@Valid @RequestBody NhanKhauThemMoiDTO nk){
@@ -77,5 +74,6 @@ public class MainController {
         giaDinhService.save(giaDinhModel);
         return ResponseEntity.ok(nk);
     }
+
 
 }

@@ -11,6 +11,6 @@ import java.util.List;
 
 @Repository
 public interface GiaDinhService extends JpaRepository<GiaDinhModel, Integer> {
-    @Query(value = "select * from giadinh gd where gd.Magiadinh like %:name%", nativeQuery = true)
+    @Query(value = "select * from giadinh gd where gd.Magiadinh like :name", nativeQuery = true)
     List<GiaDinhModel> findGiaDinhByMa(@Param("name") String name);
 }

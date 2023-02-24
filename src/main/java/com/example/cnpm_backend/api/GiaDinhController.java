@@ -86,11 +86,13 @@ public class GiaDinhController {
 
     //    lấy một liên hệ
     @RequestMapping(value = "/giadinh/{maGiaDinh}", method = RequestMethod.GET)
-    public ResponseEntity<List<GiaDinhModel>> listGiaDinhWithMa(@RequestBody GiaDinhModel giaDinhModel){
-        List<GiaDinhModel> listGiaDinh = giaDinhService.findGiaDinhByMa(giaDinhModel.getMaGiaDinh());
+    public ResponseEntity<List<GiaDinhModel>> listGiaDinhWithMa(@PathVariable("maGiaDinh") String maGiaDinh){
+        List<GiaDinhModel> listGiaDinh = giaDinhService.findGiaDinhByMa(maGiaDinh);
         if(listGiaDinh.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<List<GiaDinhModel>>(listGiaDinh, HttpStatus.OK);
     }
+
+
 }

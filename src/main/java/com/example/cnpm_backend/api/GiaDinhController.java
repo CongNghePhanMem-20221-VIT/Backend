@@ -2,7 +2,7 @@ package com.example.cnpm_backend.api;
 
 import com.example.cnpm_backend.model.AccountModel;
 import com.example.cnpm_backend.model.GiaDinhModel;
-import com.example.cnpm_backend.model.NhanKhauModel;
+import com.example.cnpm_backend.model.dto.NhanKhauGiaDinhDTO;
 import com.example.cnpm_backend.service.GiaDinhService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -85,13 +85,11 @@ public class GiaDinhController {
 
     //    lấy một liên hệ
     @RequestMapping(value = "/giadinh/{maGiaDinh}", method = RequestMethod.GET)
-    public ResponseEntity<List<GiaDinhModel>> listGiaDinhWithMa(@PathVariable("maGiaDinh") String maGiaDinh){
-        List<GiaDinhModel> listGiaDinh = giaDinhService.findGiaDinhByMa(maGiaDinh);
+    public ResponseEntity<List<NhanKhauGiaDinhDTO>> listGiaDinhWithMa(@PathVariable("maGiaDinh") String maGiaDinh){
+        List<NhanKhauGiaDinhDTO> listGiaDinh = giaDinhService.findGiaDinhByMa(maGiaDinh);
         if(listGiaDinh.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<List<GiaDinhModel>>(listGiaDinh, HttpStatus.OK);
+        return new ResponseEntity<List<NhanKhauGiaDinhDTO>>(listGiaDinh, HttpStatus.OK);
     }
-
-
 }
